@@ -1,7 +1,11 @@
 /**
  * Parametric Jang Seeder Wheel
  * Author: Bryan Elliott <fordiman@gmail.com>
+ * Contributors: 
+ *  [Bryan Elliott](https://github.com/Fordi)
+ *  [fouroakfarm](https://www.thingiverse.com/fouroakfarm/designs)
  * License: [CC-Attribution 4.0](https://creativecommons.org/licenses/by/4.0/)
+ * Source code: https://github.com/Fordi/jang-seeder-wheel
 **/
 
 function chord(r, f) = sin(acos((r - f) / r)) * r;

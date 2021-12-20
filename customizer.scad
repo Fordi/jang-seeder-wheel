@@ -1,9 +1,14 @@
 /**
  * Parametric Jang Seeder Wheel
  * Author: Bryan Elliott <fordiman@gmail.com>
+ * Contributors: 
+ *  [Bryan Elliott](https://github.com/Fordi)
+ *  [fouroakfarm](https://www.thingiverse.com/fouroakfarm/designs)
  * License: [CC-Attribution 4.0](https://creativecommons.org/licenses/by/4.0/)
+ * Source code: https://github.com/Fordi/jang-seeder-wheel
 **/
 
+include<./jang_seeder_wheel.scad>
 include<./jang_seeder_wheel.scad>
 
 // Wheel diameter
@@ -46,7 +51,6 @@ seed_dia=3.5;
 // Shape of seed imprint
 seed_shape="v"; // [s:sphere, v:cone]
 
-
 // Resolution of cylinders
 cylinder_res=90;
 
@@ -74,3 +78,4 @@ jangSeederWheel(
   cylinder_res=90,
   seed_res=30
 );
+
