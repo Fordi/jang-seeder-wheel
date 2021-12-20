@@ -8,9 +8,6 @@
  * Source code: https://github.com/Fordi/jang-seeder-wheel
 **/
 
-include<./jang_seeder_wheel.scad>
-include<./jang_seeder_wheel.scad>
-
 // Wheel diameter
 wheel_dia=60;
 // Wheel width
@@ -56,6 +53,9 @@ cylinder_res=90;
 
 // Resolution of seeds
 seed_res=30;
+
+
+include<./jang_seeder_wheel.scad>
 
 jangSeederWheel(
   wheel_dia=60,
