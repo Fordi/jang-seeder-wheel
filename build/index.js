@@ -43,6 +43,8 @@ const [ entryPoint, outputFile ] = process.argv.slice(2);
 
 (async () => {
   const transcluded = await scadSource(entryPoint);
-  const output = new ASTPrinter(new FormattingConfiguration()).visitScadFile(transcluded);
+  let output = new ASTPrinter(new FormattingConfiguration()).visitScadFile(transcluded);
+  // Paste-over of [Issue #15](https://github.com/alufers/openscad-parser/issues/15)
+  output = output.replace(/;\n\/\/ \[/g, '; // [');
   await writeFile(outputFile, output, 'utf8');
 })();
