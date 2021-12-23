@@ -43,12 +43,12 @@ seed_count=12;
 // Rows of seed cells
 seed_rows=1;
 // Diameter of seed cells in mm
-seed_diameter=3.5;
+seed_size=3.5;
 // Depth of seed cells in mm
 seed_depth=1.75;
 
 // Shape of seed imprint
-seed_shape="s"; // [s:sphere, v:cone, hm:half-moon, x:cross]
+seed_shape = "sphere"; // [sphere:sphere, cone:cone, half-moon:half-moon, cross:cross, slot:slot]
 
 // Countersink around seed in mm
 seed_countersink_size=0.01;
@@ -81,7 +81,7 @@ jangSeederWheel(
   spoke_height=spoke_height,
   seed_count=seed_count,
   seed_rows=seed_rows,
-  seed_diameter=seed_diameter,
+  seed_size=seed_size,
   seed_depth=seed_depth,
   seed_shape=seed_shape,
   seed_countersink_depth=seed_countersink_depth,

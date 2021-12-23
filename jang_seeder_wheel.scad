@@ -26,7 +26,7 @@ module jangSeederWheel(
   spoke_height=13,
   seed_count=12,
   seed_rows=1,
-  seed_diameter=3.5,
+  seed_size=3.5,
   seed_depth=1.75,
   seed_shape="v", // Thanks, [fouroakfarm](https://www.thingiverse.com/fouroakfarm/designs)!
   seed_countersink_depth=0.5,
@@ -122,36 +122,36 @@ module jangSeederWheel(
         rotate([0, 0, theta + (360 / seed_count * row)])
           translate([wheel_dia / 2 * 1.001, 0, wheel_width * (row + 0.5) / (seed_rows)]) {
             // Conical 'v' shape
-            if(seed_shape == "v") {
+            if(seed_shape == "cone") {
               rotate([0,270,0])
                 union() {
                   if (seed_countersink_size > 0 && seed_countersink_depth > 0) {
                     cylinder(
                       h=seed_countersink_depth*1.001,
-                      d1=seed_countersink_size * 2 + seed_diameter,
-                      d2=seed_diameter,
+                      d1=seed_countersink_size * 2 + seed_size,
+                      d2=seed_size,
                       $fn=seed_res
                     );
                   }
                   translate([0, 0, seed_countersink_depth])
                     cylinder(
                       h=seed_depth,
-                      d1=seed_diameter,
+                      d1=seed_size,
                       d2=0,
                       $fn=seed_res
                     );
                 }
-            // Cross shape (+) like stock Jang rollers with code: XY
-            } else if( seed_shape == "x" ) union() {
+            // Cross shape (X) like stock Jang rollers with code: XY
+            } else if( seed_shape == "cross" ) union() {
               // Countersink
               if (seed_countersink_size > 0 && seed_countersink_depth > 0) {
                 for (i = [-2 : 2]) {
                   rotate([i * 90, 0, 0])
-                    translate([0, seed_diameter / 4, 0])
+                    translate([0, seed_size / 4, 0])
                       rotate([0, 270, 0]) cylinder(
                         h=seed_countersink_depth,
-                        d1=seed_countersink_size * 2 + seed_diameter / 2,
-                        d2=seed_diameter / 2,
+                        d1=seed_countersink_size * 2 + seed_size / 2,
+                        d2=seed_size / 2,
                         $fn=seed_res
                       );
                 }
@@ -161,31 +161,31 @@ module jangSeederWheel(
                 translate([-seed_countersink_depth, 0, 0])
                   resize([seed_depth, 0, 0])
                     rotate([i * 90,0,0])
-                      translate([0, seed_diameter / 4, 0])
+                      translate([0, seed_size / 4, 0])
                         difference() {
                           union() {
-                            sphere(d=seed_diameter / 2, $fn=seed_res);
+                            sphere(d=seed_size / 2, $fn=seed_res);
                             rotate([90, 0, 0]) cylinder(
-                              h = seed_diameter / 4,
-                              r = seed_diameter / 4,
+                              h = seed_size / 4,
+                              r = seed_size / 4,
                               $fn=seed_res
                             );
                           }
-                          translate([seed_diameter / 4, 0, 0]) cube(seed_diameter / 2, center=true);
+                          translate([seed_size / 4, 0, 0]) cube(seed_size / 2, center=true);
                         }
               }
             // Half-moon shape like stock Jang rollers with code: J
-            } else if( seed_shape == "hm" ) {
+            } else if( seed_shape == "half-moon" ) {
               if (seed_countersink_size > 0 && seed_countersink_depth > 0) {
                 rotate([0,270,0])
                   translate([
                     0,
-                    seed_countersink_size / 2 * seed_diameter / (seed_countersink_size * 2 + seed_diameter),
+                    seed_countersink_size / 2 * seed_size / (seed_countersink_size * 2 + seed_size),
                     seed_countersink_depth / 2
                   ])
                     linear_extrude(
                       height=seed_countersink_depth * 1.001,
-                      scale=seed_diameter / (seed_countersink_size * 2 + seed_diameter),
+                      scale=seed_size / (seed_countersink_size * 2 + seed_size),
                       twist=0,
                       center=true,
                       $fn = seed_res,
@@ -193,43 +193,78 @@ module jangSeederWheel(
                     )
                     
                       translate([0, -seed_countersink_size / 2, 0]) difference() {
-                        circle(d=seed_countersink_size * 2 + seed_diameter, $fn=seed_res);
+                        circle(d=seed_countersink_size * 2 + seed_size, $fn=seed_res);
                         translate([
-                          -(seed_countersink_size * 2 + seed_diameter)/2,
-                          -(seed_countersink_size * 2 + seed_diameter),
+                          -(seed_countersink_size * 2 + seed_size)/2,
+                          -(seed_countersink_size * 2 + seed_size),
                         ])
-                          square([seed_countersink_size * 2 + seed_diameter, seed_countersink_size * 2 + seed_diameter]);
+                          square([seed_countersink_size * 2 + seed_size, seed_countersink_size * 2 + seed_size]);
                       }
               }
               translate([-seed_countersink_depth, 0, 0]) {
                 resize([seed_depth, 0, 0])
                   difference(){
-                    sphere(d=seed_diameter, $fn=seed_res);
+                    sphere(d=seed_size, $fn=seed_res);
                     union() {
-                      translate([seed_diameter / 2, 0, 0])
-                        cube(seed_diameter, center=true);
-                      translate([-seed_diameter*0.13,-seed_diameter/2,0])
+                      translate([seed_size / 2, 0, 0])
+                        cube(seed_size, center=true);
+                      translate([-seed_size*0.13,-seed_size/2,0])
                         rotate([0, 0, 60])
-                          cube([seed_diameter, seed_diameter*2, seed_diameter],center=true);
+                          cube([seed_size, seed_size*2, seed_size],center=true);
                     }
                   }
               }
+            // Half-cylinder shape
+            } else if(seed_shape == "slot") {
+              
+              rotate([0, 270, 0]) {
+                translate([0, 0, seed_countersink_depth / 2]) linear_extrude(
+                  height=seed_countersink_depth * 1.001,
+                  scale=[
+                    
+                    (wheel_width - rim_thickness * 2) / (seed_countersink_size * 2 + wheel_width - rim_thickness * 2),
+                    seed_size / (seed_countersink_size * 2 + seed_size)
+                  ],
+                  twist=0,
+                  center=true,
+                  $fn = seed_res,
+                  slices = seed_res
+                )
+                square([
+                  seed_countersink_size * 2 + wheel_width - rim_thickness * 2,
+                  seed_countersink_size * 2 + seed_size
+                ], center=true);
+              }
+              
+              translate([-seed_countersink_depth, 0, -wheel_width / 2 + rim_thickness])
+                difference() {
+                  cylinder(
+                    h=wheel_width - rim_thickness * 2,
+                    d=seed_size,
+                    $fn=seed_res
+                  );
+                  translate([seed_size / 2, 0, (wheel_width - rim_thickness * 2) / 2 * 1.001]) cube([
+                    seed_size,
+                    seed_size,
+                    (wheel_width - rim_thickness * 2) * 1.002
+                  ], center=true);
+                }
             // Regular sphere shape
             } else {
               union() {
                 if (seed_countersink_size > 0 && seed_countersink_depth > 0) {
                   rotate([0,270,0]) cylinder(
                     h=seed_countersink_depth * 1.001,
-                    d1=seed_countersink_size * 2 + seed_diameter,
-                    d2=seed_diameter,
+                    d1=seed_countersink_size * 2 + seed_size,
+                    d2=seed_size,
                     $fn=seed_res
                   );
                 }
                 translate([-seed_countersink_depth, 0, 0])
                   resize([seed_depth, 0, 0])
                     difference() {
-                      sphere(d=seed_diameter, $fn=seed_res);
-                      translate([seed_diameter / 2, 0, 0]) cube(seed_diameter, center=true);
+                      sphere(d=seed_size, $fn=seed_res);
+                      translate([seed_size / 2, 0, 0]) cube(seed_size, center=true);
                     }
               }
             }
