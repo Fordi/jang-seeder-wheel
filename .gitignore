@@ -2,3 +2,5 @@ node_modules
 seed_wheel.scad
 *.stl
 .DS_Store
+*.gcode
+*.cbddlp
