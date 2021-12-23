@@ -26,8 +26,9 @@ module jangSeederWheel(
   spoke_height=13,
   seed_count=12,
   seed_rows=1,
-  seed_dia=3.5,
+  seed_diameter=3.5,
   seed_shape="v", // Thanks, [fouroakfarm](https://www.thingiverse.com/fouroakfarm/designs)!
+  seed_countersink=false,
   cylinder_res=90,
   seed_res=30
 ) {
@@ -116,11 +117,33 @@ module jangSeederWheel(
       for(row = [0 : 1 : seed_rows - 1]) {
         rotate([0, 0, theta + (360 / seed_count * row)])
           translate([wheel_dia / 2, 0, wheel_width * (row + 0.5) / (seed_rows)])
-            if(seed_shape == "v") {
+            // Conical 'v' shap
+            if(seed_shape == "v") { e
               rotate([0,270,0])
-              cylinder(h=seed_dia/2,d1=seed_dia,d2=0,$fn=seed_res);
-            } else {
-              sphere(d=seed_dia, $fn=seed_res);
+                cylinder(h=seed_depth,d1=seed_diameter,d2=0,$fn=s_res);
+            // Cross shape (+) like stock Jang rollers with code: XY
+            } else if( seed_shape == "x" ) { 
+                  // Cross of 4 spheres
+                  for(i = [-2 : 2])
+                     rotate([i * 90,0,0])
+                          translate([0, seed_diameter,0])
+                              sphere(seed_diameter,$fn=s_res);
+            // Half-moon shape like stock Jang rollers with code: J
+            } else if( seed_shape == "hm" ) { 
+                difference(){
+                    sphere(d=seed_diameter, $fn=s_res);
+                    translate([0,-seed_diameter/2,0])
+                      cube(seed_diameter,center=true);
+                }
+            // Regular sphere shape
+            } else { 
+                resize([seed_depth,0,0])
+                  sphere(d=seed_diameter, $fn=s_res);
+            }
+            // Countersink? Stock Jang roller code BL-12 uses it
+            if(seed_countersink) {
+                rotate([0,270,0])
+                  cylinder(h=seed_diameter/4,d1=seed_diameter*1.7,d2=0,$fn=s_res);
             }
       }
     }
