@@ -43,10 +43,13 @@ seed_count=12;
 // Rows of seed cells
 seed_rows=1;
 // Diameter of each seed cell
-seed_dia=3.5;
+seed_diameter=3.5;
 
 // Shape of seed imprint
-seed_shape="v"; // [s:sphere, v:cone]
+seed_shape="v"; // [s:sphere, v:cone,  hm:half-moon, x:cross]
+
+// Countersink seed imprint?
+seed_countersink=false;
 
 // Resolution of cylinders
 cylinder_res=90;
@@ -73,7 +76,7 @@ jangSeederWheel(
   spoke_height=13,
   seed_count=12,
   seed_rows=1,
-  seed_dia=3.5,
+  seed_diameter=3.5,
   seed_shape="v",
   cylinder_res=90,
   seed_res=30

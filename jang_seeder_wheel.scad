@@ -28,7 +28,7 @@ module jangSeederWheel(
   seed_rows=1,
   seed_diameter=3.5,
   seed_shape="v", // Thanks, [fouroakfarm](https://www.thingiverse.com/fouroakfarm/designs)!
-  seed_counterstink=false,
+  seed_countersink=false,
   cylinder_res=90,
   seed_res=30
 ) {
