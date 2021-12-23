@@ -15,14 +15,14 @@ module flattenedCylinder(r1, r2, h, f1, f2, $fn) {
     cylinder(r1=r1, r2=r2, h=h, $fn=$fn);
     polyhedron(
       points = [
-        [ r1 - f1,  chord(r1, f1), 0],
-        [ r1 - f1, -chord(r1, f1), 0],
-        [ r2 - f2,  chord(r2, f2), h],
-        [ r2 - f2, -chord(r2, f2), h],
-        [ r1     ,  chord(r1, f1), 0],
-        [ r1     , -chord(r1, f1), 0],
-        [ r2     ,  chord(r2, f2), h],
-        [ r2     , -chord(r2, f2), h],
+        [ r1 - f1,  chord(r1, f1), -0.001],
+        [ r1 - f1, -chord(r1, f1), -0.001],
+        [ r2 - f2,  chord(r2, f2), 1.001*h],
+        [ r2 - f2, -chord(r2, f2), 1.001*h],
+        [ r1     ,  chord(r1, f1), -0.001],
+        [ r1     , -chord(r1, f1), -0.001],
+        [ r2     ,  chord(r2, f2), 1.001*h],
+        [ r2     , -chord(r2, f2), 1.001*h],
       ],
       faces = [
         [0, 2, 3, 1],
