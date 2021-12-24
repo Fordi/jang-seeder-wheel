@@ -15,7 +15,7 @@ The renders of every roller preset are available [on Thingiverse](https://www.th
 Running this command will open up OpenSCAD.  If you open up the Customizer, you'll see a bunch of presets for known Jang seed rollers.
 
 ```
-openscad customizer.scad
+openscad seed_roller.scad
 ```
 
 If you just want to generate a known STL:
