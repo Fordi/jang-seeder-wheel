@@ -1,6 +1,10 @@
-# Jang Seeder Wheel
+# Parametric Seed Roller
 
-This is a parametric seed roller, with default parameters for a Jang seeder. You can adjust things like the diameter and borehole to adjust for your printer's tolerances. You can also adjust the number of seed cells and their size.
+This is a parametric seed roller with default parameters and presets for Jang JP or JPH series rollers.
+
+<img src="https://github.com/Fordi/jang-seeder-wheel/raw/main/Sample_Orange_PLA.jpg" width="320" alt="Jang F-12 sample print" />
+
+You can adjust things like the diameter and borehole to adjust for your printer's tolerances. You can also adjust the number of seed cells and their size.
 
 I started from an existing Jang wheel, took measurements, and implemented a fully parameterized version out of shape primitives.
 
