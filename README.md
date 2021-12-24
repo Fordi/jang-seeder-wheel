@@ -18,16 +18,79 @@ Running this command will open up OpenSCAD.  If you open up the Customizer, you'
 openscad seed_roller.scad
 ```
 
-If you just want to generate a known STL:
+The following command will render the preset "Jang M-12" as "Jang M-12.stl":
+
+```bash
+./render.sh "Jang M-12"
+```
+
+To list all the presets:
+
+```bash
+./render.sh list
+```
+
+The current set of supported rollers are:
 
 ```
-openscad -p seed_roller.json -P "Jang M-12" seed_roller.scad --render -o seed_roller_jang_m-12.stl
+Jang A-6
+Jang AA-6
+Jang B-12
+Jang BL-12
+Jang C-12
+Jang C-6
+Jang F-12
+Jang F-24
+Jang F-6
+Jang G-12
+Jang G-6
+Jang J-2
+Jang J-4
+Jang J-8
+Jang L J-12
+Jang L J-24
+Jang L J-6
+Jang L-12
+Jang L-24
+Jang MJ-12
+Jang MJ-24
+Jang MJ-4
+Jang MJ-6
+Jang MM-12
+Jang MM-24
+Jang N-6
+Jang Q-12
+Jang Q-6
+Jang R-12
+Jang R-24
+Jang X-12
+Jang X-24
+Jang X-4
+Jang X-6
+Jang XXY-12
+Jang XXY-24
+Jang XXY-36
+Jang XY-12
+Jang XY-24
+Jang XY-36
+Jang XY-4
+Jang YX-12
+Jang YX-24
+Jang YX-4
+Jang YX-6
+Jang YYJ-12
+Jang YYJ-24
+Jang YYJ-6
+Jang YYX-12
+Jang YYX-24
+Jang YYX-36
+Jang Z-Blank
 ```
 
-To render all the presets in `customizer.json` into `./stl/`.
+To render all the presets into `./stl/`.
 
-```
-./build.sh
+```bash
+./render.sh all
 ```
 
 > Note: there are 52 Jang wheels, and they each take 2-3 minutes to render.  You're looking at about 2 hours of rendering.
