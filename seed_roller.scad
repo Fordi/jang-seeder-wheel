@@ -92,27 +92,27 @@ module flattenedCylinder(r1, r2, h, f1, f2, $fn) {
   }
 };
 
-module quarter_cylinder($fn = 30) {
-    difference() {
-        cylinder(h=1, d=2, $fn=$fn);
-        translate([-1, -1, -0.001]) cube([2, 1, 1.002]);
-        translate([-1, -1, -0.001]) cube([1, 2, 1.002]);
-    }
+module quarter_cylinder() {
+  difference() {
+    cylinder(h=1, d=2, $fn=seed_res);
+    translate([-1, -1, -0.001]) cube([2, 1, 1.002]);
+    translate([-1, -1, -0.001]) cube([1, 2, 1.002]);
+  }
 }
 
 
-module unit_half_teardrop($fn = 30) {
+module unit_half_teardrop() {
   resize([1, 1, 1])
     union() {
       resize([0.5, 0, 0])
         translate([1, 0, 0])
           rotate([0, 0, 90])
-            quarter_cylinder($fn = $fn);
+            quarter_cylinder();
       translate([0.5, 0, 0])
         resize([0.333, 1, 0])
           difference() {
             scale([0.5, 0.5, 1]) 
-              quarter_cylinder($fn = $fn);
+              quarter_cylinder();
             translate([0.4, -0.001, -0.001])
               cube([0.5, 0.5, 1.002]);
           }
