@@ -8,6 +8,8 @@
  * Source code: https://github.com/Fordi/jang-seeder-wheel
 **/
 
+use <MCAD/teardrop.scad>
+
 // Wheel diameter in mm
 wheel_dia=60;
 // Wheel width in mm
@@ -120,7 +122,7 @@ module seedRoller(
   flat_bevel_width=sin(acos((bezel_dia / 2 - bezel_flat) / (bezel_dia / 2))) * (bezel_dia / 2);
   // Override min_slope to prevent model holes
   min_rim_slope = max(rim_slope, 1.5*(seed_depth + seed_countersink_depth - rim_thickness));
-
+  teardrop_ratio=1.2;
   difference() {
     union() {
       // Rim
@@ -299,36 +301,50 @@ module seedRoller(
             // Half-cylinder shape
             } else if(seed_shape == "slot") {
               rotate([0, 270, 0]) {
-                translate([0, 0, seed_countersink_depth / 2]) linear_extrude(
-                  height=seed_countersink_depth * 1.001,
-                  scale=[
-                    
-                    (wheel_width - rim_thickness * 2) / (seed_countersink_size * 2 + wheel_width - rim_thickness * 2),
-                    seed_size / (seed_countersink_size * 2 + seed_size)
-                  ],
-                  twist=0,
-                  center=true,
-                  $fn = seed_res,
-                  slices = seed_res
-                )
-                square([
-                  seed_countersink_size * 2 + wheel_width - rim_thickness * 2,
-                  seed_countersink_size * 2 + seed_size
-                ], center=true);
+                translate([
+                  0, 
+                  seed_size * (teardrop_ratio - 1) / 2,
+                  seed_countersink_depth / 2
+                ])
+                  linear_extrude(
+                    height=seed_countersink_depth * 1.001,
+                    scale=[
+                      (wheel_width - rim_thickness * 2) / (seed_countersink_size * 2 + wheel_width - rim_thickness * 2),
+                      seed_size * teardrop_ratio / (seed_countersink_size * 2 + seed_size  * teardrop_ratio)
+                    ],
+                    twist=0,
+                    center=true,
+                    $fn = seed_res,
+                    slices = seed_res
+                  )
+                    square([
+                      seed_countersink_size * 2 + wheel_width - rim_thickness * 2,
+                      seed_countersink_size * 2 + seed_size * teardrop_ratio
+                    ], center=true);
               }
               
               translate([-seed_countersink_depth, 0, -wheel_width / 2 + rim_thickness])
                 difference() {
-                  cylinder(
-                    h=wheel_width - rim_thickness * 2,
-                    d=seed_size,
-                    $fn=seed_res
-                  );
-                  translate([seed_size / 2, 0, (wheel_width - rim_thickness * 2) / 2 * 1.001]) cube([
-                    seed_size,
-                    seed_size,
-                    (wheel_width - rim_thickness * 2) * 1.002
-                  ], center=true);
+                  translate([0, 0, (wheel_width - rim_thickness*2) / 2])
+                    difference() {
+                      rotate([270, 270, 0])
+                        resize([0, seed_depth, seed_size])
+                        teardrop(
+                          radius=seed_size/2,
+                          length=wheel_width - rim_thickness * 2,
+                          angle=90
+                        );
+                    }
+                  translate([
+                    seed_size / 4,
+                    seed_size * (teardrop_ratio - 1) / 2,
+                    (wheel_width - rim_thickness * 2) / 2 * 1.001
+                  ])
+                    cube([
+                      seed_size / 2,
+                      seed_size * teardrop_ratio,
+                      (wheel_width - rim_thickness * 2) * 1.002
+                    ], center=true);
                 }
             // Regular sphere shape
             } else {
