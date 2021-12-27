@@ -108,7 +108,7 @@ module seedRoller(
   seed_rows=1,
   seed_size=3.5,
   seed_depth=1.75,
-  seed_shape="v", // Thanks, [fouroakfarm](https://www.thingiverse.com/fouroakfarm/designs)!
+  seed_shape="sphere", // Thanks, [fouroakfarm](https://www.thingiverse.com/fouroakfarm/designs)!
   seed_countersink_depth=0.5,
   seed_countersink_size=1,
   cylinder_res=90,
@@ -118,6 +118,8 @@ module seedRoller(
   bezel_dia = bore_dia + bore_bezel * 2;
   bezel_flat = bore_flat + bore_bezel;
   flat_bevel_width=sin(acos((bezel_dia / 2 - bezel_flat) / (bezel_dia / 2))) * (bezel_dia / 2);
+  // Override min_slope to prevent model holes
+  min_rim_slope = max(rim_slope, 1.5*(seed_depth + seed_countersink_depth - rim_thickness));
 
   difference() {
     union() {
@@ -127,14 +129,14 @@ module seedRoller(
         translate([0, 0, -(wheel_width - disc_thickness) / 2 * 0.001]) 
         cylinder(
           r1=wheel_dia/2 - rim_thickness,
-          r2=wheel_dia/2 - rim_thickness - rim_slope,
+          r2=wheel_dia/2 - rim_thickness - min_rim_slope,
           h=(wheel_width - disc_thickness) / 2 * 1.001,
           $fn=cylinder_res
         );
         
         translate([0, 0, wheel_width - (wheel_width - disc_thickness) / 2]) 
           cylinder(
-            r1=wheel_dia/2 - rim_thickness - rim_slope,
+            r1=wheel_dia/2 - rim_thickness - min_rim_slope,
             r2=wheel_dia/2 - rim_thickness,
             h=(wheel_width - disc_thickness) / 2 * 1.001,
             $fn=cylinder_res
@@ -296,7 +298,6 @@ module seedRoller(
               }
             // Half-cylinder shape
             } else if(seed_shape == "slot") {
-              
               rotate([0, 270, 0]) {
                 translate([0, 0, seed_countersink_depth / 2]) linear_extrude(
                   height=seed_countersink_depth * 1.001,
