@@ -92,6 +92,42 @@ module flattenedCylinder(r1, r2, h, f1, f2, $fn) {
   }
 };
 
+module quarter_cylinder($fn = 30) {
+    difference() {
+        cylinder(h=1, d=2, $fn=$fn);
+        translate([-1, -1, -0.001]) cube([2, 1, 1.002]);
+        translate([-1, -1, -0.001]) cube([1, 2, 1.002]);
+    }
+}
+
+
+module unit_half_teardrop($fn = 30) {
+  resize([1, 1, 1])
+    union() {
+      resize([0.5, 0, 0])
+        translate([1, 0, 0])
+          rotate([0, 0, 90])
+            quarter_cylinder($fn = $fn);
+      translate([0.5, 0, 0])
+        resize([0.333, 1, 0])
+          difference() {
+            scale([0.5, 0.5, 1]) 
+              quarter_cylinder($fn = $fn);
+            translate([0.4, -0.001, -0.001])
+              cube([0.5, 0.5, 1.002]);
+          }
+      translate([0.833, 0, 0])
+        resize([0.75, 0.6, 0])
+          translate([1, 1, 0])
+            rotate(180)
+              difference() {
+                translate([0.001, 0.001, 0])
+                  cube([0.999, 0.999, 1]);
+                quarter_cylinder();
+              }
+    }
+}
+
 module seedRoller(
   wheel_dia=60,
   wheel_width=20,
@@ -324,27 +360,11 @@ module seedRoller(
               }
               
               translate([-seed_countersink_depth, 0, -wheel_width / 2 + rim_thickness])
-                difference() {
-                  translate([0, 0, (wheel_width - rim_thickness*2) / 2])
-                    difference() {
-                      rotate([270, 270, 0])
-                        resize([0, seed_depth, seed_size])
-                        teardrop(
-                          radius=seed_size/2,
-                          length=wheel_width - rim_thickness * 2,
-                          angle=90
-                        );
+                union() {
+                  rotate([0, 0, 90])
+                    resize([seed_size, seed_depth, (wheel_width - rim_thickness*2)]) {
+                      translate([-0.5, 0, 0]) unit_half_teardrop();
                     }
-                  translate([
-                    seed_size / 4,
-                    seed_size * (teardrop_ratio - 1) / 2,
-                    (wheel_width - rim_thickness * 2) / 2 * 1.001
-                  ])
-                    cube([
-                      seed_size / 2,
-                      seed_size * teardrop_ratio,
-                      (wheel_width - rim_thickness * 2) * 1.002
-                    ], center=true);
                 }
             // Regular sphere shape
             } else {
