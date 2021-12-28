@@ -2,7 +2,7 @@
 ENTRY="$(dirname "$0")/seed_roller.scad"
 PRESETS="$(dirname "$0")/seed_roller.json"
 RENDER_DIR="$(dirname "$0")/stl"
-MAX_THREADS=2
+MAX_THREADS=4
 
 OPENSCAD="$(which openscad)"
 
@@ -48,7 +48,7 @@ if [[ -x "$OPENSCAD" ]]; then
   else
     while [[ "$1" != "" ]]; do
       echo "Rendering $1"
-      openscad "$ENTRY" -p "$PRESETS" -P "$1" --render -o "./$1.stl" &
+      openscad "$ENTRY" -p "$PRESETS" -P "$1" --render -o "./$1.stl"
       shift
     done
   fi

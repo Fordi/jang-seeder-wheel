@@ -50,6 +50,8 @@ Jang J-8
 Jang L J-12
 Jang L J-24
 Jang L J-6
+Jang L V-12
+Jang L V-24
 Jang L-12
 Jang L-24
 Jang MJ-12
@@ -67,13 +69,13 @@ Jang X-12
 Jang X-24
 Jang X-4
 Jang X-6
-Jang XXY-12
-Jang XXY-24
-Jang XXY-36
 Jang XY-12
 Jang XY-24
 Jang XY-36
 Jang XY-4
+Jang XYY-12
+Jang XYY-24
+Jang XYY-36
 Jang YX-12
 Jang YX-24
 Jang YX-4
