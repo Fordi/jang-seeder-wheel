@@ -64,6 +64,18 @@ cylinder_res=180;
 // Resolution of seeds
 seed_res=30;
 
+// Text
+text = "Y-24"; // Text string
+text_size = 4;
+text_depth = 0.2;
+text_box_width = text_size+2;
+text_box_length = 22;
+text_box_height = 1; //text_depth*2.25;
+text_solidbody_offset = text_depth; // When solid body is selcted, the offset to sink body down
+
+// Spoked and sloped main body OR solid
+solid_main_body = true;
+
 function chord(r, f) = sin(acos((r - f) / r)) * r;
 
 module flattenedCylinder(r1, r2, h, f1, f2, $fn) {
@@ -160,26 +172,55 @@ module seedRoller(
   min_rim_slope = max(rim_slope, 1.5*(seed_depth + seed_countersink_depth - rim_thickness));
   teardrop_ratio=1.2;
   difference() {
-    union() {
-      // Rim
-      difference() {
-        cylinder(r=wheel_dia/2, h=wheel_width, $fn=cylinder_res);
-        translate([0, 0, -(wheel_width - disc_thickness) / 2 * 0.001]) 
-        cylinder(
-          r1=wheel_dia/2 - rim_thickness,
-          r2=wheel_dia/2 - rim_thickness - min_rim_slope,
-          h=(wheel_width - disc_thickness) / 2 * 1.001,
-          $fn=cylinder_res
-        );
-        
-        translate([0, 0, wheel_width - (wheel_width - disc_thickness) / 2]) 
+    // Rim / main body/cylinder
+    if( solid_main_body )
+      // Solid body
+      if( text ) {
+        // Typical embossed text would require support when printing so instead
+        // sink the body lower and have raised print on top
+        //_offset = wheel_width-1;
+        cylinder(d=wheel_dia, h=wheel_width-text_solidbody_offset, $fn=cylinder_res);
+        rotate([0,0,270])
+          translate([0,text_box_width/2+bore_dia/2+1,wheel_width-text_solidbody_offset+text_depth])
+              linear_extrude(text_depth) text(text, text_size, halign="center", valign="center");
+        // Make up offset to get back to full wheel width as just rim
+        translate([0,0,wheel_width-text_solidbody_offset]) {
+          linear_extrude(text_solidbody_offset)
+            difference() {
+              circle(d=wheel_dia, $fn=cylinder_res);
+              circle(d=wheel_dia-rim_thickness, $fn=cylinder_res);
+            }
+            // Add rim for center bore
+              difference() {
+                circle(d=bore_dia+rim_thickness, $fn=cylinder_res);
+                circle(d=bore_dia, $fn=cylinder_res);
+              }
+        }      
+      } else {
+        cylinder(d=wheel_dia, h=wheel_width, $fn=cylinder_res);
+      }
+    else
+      // Spoked body / copy of Jang design
+      union() {
+        // Rim
+        difference() {
+          cylinder(r=wheel_dia/2, h=wheel_width, $fn=cylinder_res);
+          translate([0, 0, -(wheel_width - disc_thickness) / 2 * 0.001]) 
           cylinder(
-            r1=wheel_dia/2 - rim_thickness - min_rim_slope,
-            r2=wheel_dia/2 - rim_thickness,
+            r1=wheel_dia/2 - rim_thickness,
+            r2=wheel_dia/2 - rim_thickness - min_rim_slope,
             h=(wheel_width - disc_thickness) / 2 * 1.001,
             $fn=cylinder_res
           );
-      }
+          
+          translate([0, 0, wheel_width - (wheel_width - disc_thickness) / 2]) 
+            cylinder(
+              r1=wheel_dia/2 - rim_thickness - min_rim_slope,
+              r2=wheel_dia/2 - rim_thickness,
+              h=(wheel_width - disc_thickness) / 2 * 1.001,
+              $fn=cylinder_res
+            );
+        }
       // Hub
       difference() {
         cylinder(r=bore_dia/2 + bore_wall, h=wheel_width, $fn=cylinder_res);
@@ -389,6 +430,18 @@ module seedRoller(
       }
     }
   }
+  // Text (for spoked body)
+  union() {
+      // Sit on top of spokes _unless_ spokes at upper extreme
+     _z = (spoke_height < wheel_width-text_box_height) ? spoke_height+(disc_thickness/2)  : wheel_width-text_box_height;
+      translate([9.5,text_box_length/2,_z])
+    rotate([0,0,270])
+      difference(){
+        cube([text_box_length,text_box_width,text_box_height]);
+        translate([text_box_length/2,text_box_width/2,text_box_height-text_depth])
+            linear_extrude(text_depth) text(text, text_size, halign="center", valign="center");
+        }
+    }
 }
 
 seedRoller(
