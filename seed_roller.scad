@@ -10,8 +10,6 @@
  * Source code: https://github.com/Fordi/jang-seeder-wheel
 **/
 
-use <MCAD/teardrop.scad>
-
 // Wheel diameter in mm
 wheel_dia=60;
 // Wheel width in mm
@@ -61,7 +59,7 @@ seed_countersink_size=0.01;
 seed_countersink_depth=0.01;
 
 // Resolution of cylinders
-cylinder_res=180;
+cylinder_res=72;
 
 // Resolution of seeds
 seed_res=30;
@@ -81,7 +79,7 @@ solid_main_body = false;
 function chord(r, f) = sin(acos((r - f) / r)) * r;
 
 module flattened_cylinder(r1, r2, h, f1, f2, $fn) {
-  difference() {
+  difference () {
     cylinder(r1=r1, r2=r2, h=h, $fn=$fn);
     polyhedron(
       points = [
@@ -109,8 +107,10 @@ module flattened_cylinder(r1, r2, h, f1, f2, $fn) {
 module quarter_cylinder() {
   difference() {
     cylinder(h=1, d=2, $fn=seed_res);
-    translate([-1, -1, -0.001]) cube([2, 1, 1.002]);
-    translate([-1, -1, -0.001]) cube([1, 2, 1.002]);
+    union() {
+      translate([-1, -1, -0.001]) cube([2, 1, 1.002]);
+      translate([-1, -1, -0.001]) cube([1, 2, 1.002]);
+    }
   }
 }
 
@@ -162,7 +162,7 @@ module seedRoller(
   seed_shape="sphere", // Thanks, [fouroakfarm](https://www.thingiverse.com/fouroakfarm/designs)!
   seed_countersink_depth=0.5,
   seed_countersink_size=1,
-  cylinder_res=90,
+  cylinder_res=72,
   seed_res=30
 ) {
   flat_width=sin(acos((bore_dia / 2 - bore_flat) / (bore_dia / 2))) * bore_dia / 2;
@@ -172,6 +172,7 @@ module seedRoller(
   // Override min_slope to prevent model holes
   min_rim_slope = max(rim_slope, 1.5*(seed_depth + seed_countersink_depth - rim_thickness));
   teardrop_ratio=1.2;
+
   difference() {
     // Rim / main body/cylinder
     if( solid_main_body )
