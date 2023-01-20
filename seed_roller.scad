@@ -5,6 +5,7 @@
  *  [Bryan Elliott](https://github.com/Fordi)
  *  [fouroakfarm](https://www.thingiverse.com/fouroakfarm/designs)
  *  [mandrewcramer](https://github.com/mandrewcramer)
+ *  [fernplant](https://github.com/fernplant)
  * License: [CC-Attribution 4.0](https://creativecommons.org/licenses/by/4.0/)
  * Source code: https://github.com/Fordi/jang-seeder-wheel
 **/
