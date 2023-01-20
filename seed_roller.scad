@@ -1,9 +1,11 @@
 /**
  * Parametric Jang Seeder Wheel
  * Author: Bryan Elliott <fordiman@gmail.com>
- * Contributors: 
+ * Contributors:
  *  [Bryan Elliott](https://github.com/Fordi)
  *  [fouroakfarm](https://www.thingiverse.com/fouroakfarm/designs)
+ *  [mandrewcramer](https://github.com/mandrewcramer)
+ *  [fernplant](https://github.com/fernplant)
  * License: [CC-Attribution 4.0](https://creativecommons.org/licenses/by/4.0/)
  * Source code: https://github.com/Fordi/jang-seeder-wheel
 **/
@@ -23,7 +25,7 @@ rim_slope=5;
 disc_thickness=6;
 
 // Diameter of circular part of bore in mm
-bore_dia=15.25;
+bore_dia=15;
 // Distance from edge to flatten bore in mm
 bore_flat=2;
 // Thickness of bore wall (hub) in mm
@@ -64,9 +66,21 @@ cylinder_res=180;
 // Resolution of seeds
 seed_res=30;
 
+// Text
+text = "LABEL"; // Text string
+text_size = 6;
+text_depth = 0.4;
+text_box_width = text_size+2;
+text_box_length = 28;
+text_box_height = spoke_height/2-disc_thickness/2+text_depth;
+
+
+// Spoked and sloped main body OR solid
+solid_main_body = false;
+
 function chord(r, f) = sin(acos((r - f) / r)) * r;
 
-module flattenedCylinder(r1, r2, h, f1, f2, $fn) {
+module flattened_cylinder(r1, r2, h, f1, f2, $fn) {
   difference() {
     cylinder(r1=r1, r2=r2, h=h, $fn=$fn);
     polyhedron(
@@ -99,7 +113,6 @@ module quarter_cylinder() {
     translate([-1, -1, -0.001]) cube([1, 2, 1.002]);
   }
 }
-
 
 module unit_half_teardrop() {
   resize([1, 1, 1])
@@ -134,7 +147,7 @@ module seedRoller(
   rim_thickness=4,
   rim_slope=5,
   disc_thickness=6,
-  bore_dia=15.25,
+  bore_dia=15,
   bore_flat=2,
   bore_wall=4,
   bore_rib_depth=0.5,
@@ -160,26 +173,42 @@ module seedRoller(
   min_rim_slope = max(rim_slope, 1.5*(seed_depth + seed_countersink_depth - rim_thickness));
   teardrop_ratio=1.2;
   difference() {
-    union() {
-      // Rim
-      difference() {
-        cylinder(r=wheel_dia/2, h=wheel_width, $fn=cylinder_res);
-        translate([0, 0, -(wheel_width - disc_thickness) / 2 * 0.001]) 
-        cylinder(
-          r1=wheel_dia/2 - rim_thickness,
-          r2=wheel_dia/2 - rim_thickness - min_rim_slope,
-          h=(wheel_width - disc_thickness) / 2 * 1.001,
-          $fn=cylinder_res
-        );
-        
-        translate([0, 0, wheel_width - (wheel_width - disc_thickness) / 2]) 
+    // Rim / main body/cylinder
+    if( solid_main_body )
+      // Solid body
+      if( text ) {
+        //_offset = wheel_width-1;
+        difference() {
+          cylinder(d=wheel_dia, h=wheel_width, $fn=cylinder_res);
+        rotate([0,0,270])
+          translate([0,text_box_width/2+bore_dia/2+1,wheel_width-text_depth+.05])
+              linear_extrude(text_depth) text(text, text_size, halign="center", valign="center");
+        }      
+      } else {
+        cylinder(d=wheel_dia, h=wheel_width, $fn=cylinder_res);
+      }
+    else
+      // Spoked body / copy of Jang design
+      union() {
+        // Rim
+        difference() {
+          cylinder(r=wheel_dia/2, h=wheel_width, $fn=cylinder_res);
+          translate([0, 0, -(wheel_width - disc_thickness) / 2 * 0.001]) 
           cylinder(
-            r1=wheel_dia/2 - rim_thickness - min_rim_slope,
-            r2=wheel_dia/2 - rim_thickness,
+            r1=wheel_dia/2 - rim_thickness,
+            r2=wheel_dia/2 - rim_thickness - min_rim_slope,
             h=(wheel_width - disc_thickness) / 2 * 1.001,
             $fn=cylinder_res
           );
-      }
+          
+          translate([0, 0, wheel_width - (wheel_width - disc_thickness) / 2]) 
+            cylinder(
+              r1=wheel_dia/2 - rim_thickness - min_rim_slope,
+              r2=wheel_dia/2 - rim_thickness,
+              h=(wheel_width - disc_thickness) / 2 * 1.001,
+              $fn=cylinder_res
+            );
+        }
       // Hub
       difference() {
         cylinder(r=bore_dia/2 + bore_wall, h=wheel_width, $fn=cylinder_res);
@@ -198,7 +227,7 @@ module seedRoller(
 
     union() {
       difference() {
-        flattenedCylinder(
+        flattened_cylinder(
           r1=bore_dia / 2,
           r2=bore_dia / 2,
           f1=bore_flat,
@@ -218,7 +247,7 @@ module seedRoller(
               cylinder(r=bore_rib_depth, h=20, $fn=cylinder_res);
         }
       }
-      translate([0, 0, -bore_bezel * 2 * 0.001]) flattenedCylinder(
+      translate([0, 0, -bore_bezel * 2 * 0.001]) flattened_cylinder(
         r1  = bore_dia / 2 + bore_bezel, 
         r2  = bore_dia / 2 - bore_bezel, 
         f1  = bore_flat,
@@ -227,7 +256,7 @@ module seedRoller(
         $fn = cylinder_res
       );
       translate([0, 0, wheel_width - bore_bezel * 2])
-        flattenedCylinder(
+        flattened_cylinder(
           r1  = bore_dia / 2 - bore_bezel, 
           r2  = bore_dia / 2 + bore_bezel, 
           f1  = bore_flat,
@@ -388,6 +417,18 @@ module seedRoller(
           }
       }
     }
+  }
+  // Text (for spoked body)
+  union() {
+    // Sit on top of spokes _unless_ spokes at upper extreme
+    _z = disc_thickness/2+wheel_width/2;
+    translate([9.5,text_box_length/2,_z])
+    rotate([0,0,270])
+      difference() {
+        cube([text_box_length,text_box_width,text_box_height]);
+        translate([text_box_length/2,text_box_width/2,text_box_height-text_depth+.05])
+            linear_extrude(text_depth) text(text, text_size, halign="center", valign="center");
+      }
   }
 }
 

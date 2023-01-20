@@ -4,7 +4,7 @@
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -22,13 +22,15 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
-        },
+            "wheel_width": "20",
+		"text": "A-6"
+		
+ 	},
         "Jang AA-6": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -46,13 +48,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "AA-6"
         },
         "Jang C-6": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -70,13 +73,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "C-6"
         },
         "Jang C-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -94,13 +98,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "C-12"
         },
         "Jang B-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -118,13 +123,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "B-12"
         },
         "Jang BL-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -142,13 +148,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "BL-12"
         },
         "Jang G-6": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -166,13 +173,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "G-6"
         },
         "Jang G-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -190,13 +198,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "G-12"
         },
         "Jang R-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -214,13 +223,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "R-12"
         },
         "Jang Q-6": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -238,13 +248,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "Q-6"
         },
         "Jang Q-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -262,13 +273,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "Q-12"
         },
         "Jang L-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -286,13 +298,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "L-12"
         },
         "Jang L-24": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -310,13 +323,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "L-24"
         },
         "Jang MJ-4": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -334,13 +348,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "MJ-4"
         },
         "Jang MJ-6": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -358,13 +373,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "MJ-6"
         },
         "Jang MJ-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -382,13 +398,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "MJ-12"
         },
         "Jang MJ-24": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -406,13 +423,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "MJ-24"
         },
         "Jang MM-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -430,13 +448,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "MM-12"
         },
         "Jang MM-24": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -454,13 +473,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "MM-24"
         },
         "Jang F-6": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -478,13 +498,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "F-6"
         },
         "Jang F-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -502,13 +523,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "F-12"
         },
         "Jang F-24": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -526,13 +548,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "F-24"
         },
         "Jang X-4": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -550,13 +573,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "X-4"
         },
         "Jang X-6": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -574,13 +598,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "X-6"
         },
         "Jang X-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -598,13 +623,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "X-12"
         },
         "Jang X-24": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -622,13 +648,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "X-24"
         },
         "Jang YYJ-6": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -646,13 +673,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "YYJ-6"
         },
         "Jang YYJ-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -670,13 +698,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "YYJ-12"
         },
         "Jang YYJ-24": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -694,13 +723,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "YYJ-24"
         },
         "Jang YX-4": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -718,13 +748,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "YX-4"
         },
         "Jang YX-6": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -742,13 +773,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "YX-6"
         },
         "Jang YX-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -766,13 +798,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "YX-12"
         },
         "Jang YYX-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -790,13 +823,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "YYX-12"
         },
         "Jang YYX-24": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -814,13 +848,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "YYX-24"
         },
         "Jang YYX-36": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -838,13 +873,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "YYX-36"
         },
         "Jang XY-4": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -862,13 +898,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "XY-4"
         },
         "Jang XY-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -886,13 +923,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "XY-12"
         },
         "Jang XY-24": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -910,13 +948,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "XY-24"
         },
         "Jang XY-36": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -934,13 +973,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "XY-36"
         },
         "Jang XYY-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -958,13 +998,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "XYY-12"
         },
         "Jang XYY-24": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -982,13 +1023,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "XYY-24"
         },
         "Jang XYY-36": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -1006,13 +1048,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "XYY-36"
         },
         "Jang Z-Blank": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -1036,7 +1079,7 @@
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -1054,13 +1097,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "J-8"
         },
         "Jang J-4": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -1078,13 +1122,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "J-4"
         },
         "Jang J-2": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -1102,13 +1147,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "J-2"
         },
         "Jang YX-24": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -1126,13 +1172,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "YX-24"
         },
-        "Jang L J-12": {
+        "Jang LJ-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -1150,13 +1197,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "LJ-12"
         },
-        "Jang L V-12": {
+        "Jang LV-12": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -1174,13 +1222,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "LV-12"
         },
-        "Jang L V-24": {
+        "Jang LV-24": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -1198,13 +1247,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "lv-24"
         },
-        "Jang L J-6": {
+        "Jang LJ-6": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -1222,13 +1272,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "LJ-6"
         },
-        "Jang L J-24": {
+        "Jang LJ-24": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -1246,13 +1297,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "LJ24"
         },
         "Jang R-24": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "6",
@@ -1270,13 +1322,14 @@
             "spoke_height": "13",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "R-24"
         },
         "Jang N-6": {
             "bore_bezel": "0.5",
             "bore_dia": "15.25",
             "bore_flat": "2",
-            "bore_rib_depth": "0.5",
+            "bore_rib_depth": "0",
             "bore_wall": "4",
             "cylinder_res": "720",
             "disc_thickness": "13",
@@ -1294,7 +1347,8 @@
             "spoke_height": "16",
             "spoke_thickness": "1.5",
             "wheel_dia": "60",
-            "wheel_width": "20"
+            "wheel_width": "20",
+		"text": "N-6"
         }
     },
     "fileFormatVersion": "1"
