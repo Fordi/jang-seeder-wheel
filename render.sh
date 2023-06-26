@@ -37,7 +37,7 @@ function render() {
     "$IMPLICITCAD" -o "$out_dir/$type.stl" ${preset[@]} "$ENTRY"
     set +x
   elif [[ -x "$OPENSCAD" ]]; then
-    "$OPENSCAD" "$ENTRY" -p "$PRESETS" -P "$type" --render -o "$out_dir/$type.stl"
+    "$OPENSCAD" "$ENTRY" -p "$PRESETS" -P "$type" --render --export-format binstl -o "$out_dir/$type.stl"
   else
     echo "No OpenSCAD installed.  https://openscad.org/" >&2
     # echo "No ImplicitCAD installed. http://www.implicitcad.org/" >&2
@@ -87,7 +87,7 @@ elif [[ "$1" == "list" ]]; then
 else
   while [[ "$1" != "" ]]; do
     echo "Rendering $1"
-    render "$1" "."
+    render "$1" "./stl"
     shift
   done
 fi

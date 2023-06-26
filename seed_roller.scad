@@ -3,9 +3,10 @@
  * Author: Bryan Elliott <fordiman@gmail.com>
  * Contributors:
  *  [Bryan Elliott](https://github.com/Fordi)
- *  [fouroakfarm](https://www.thingiverse.com/fouroakfarm/designs)
- *  [mandrewcramer](https://github.com/mandrewcramer)
- *  [fernplant](https://github.com/fernplant)
+ *  [fouroakfarm](https://www.thingiverse.com/fouroakfarm/designs) - Info about the "cone" type
+ *  [mandrewcramer](https://github.com/mandrewcramer) - label feature
+ *  [fernplant](https://github.com/fernplant) - lots of shape help
+ *  [Peter Armstrong](https://github.com/peteretep) - J#-6 series
  * License: [CC-Attribution 4.0](https://creativecommons.org/licenses/by/4.0/)
  * Source code: https://github.com/Fordi/jang-seeder-wheel
 **/
