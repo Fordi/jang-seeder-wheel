@@ -47,6 +47,9 @@ Jang G-6
 Jang J-2
 Jang J-4
 Jang J-8
+Jang J1-6
+Jang J3-6
+Jang J5-6
 Jang L J-12
 Jang L J-24
 Jang L J-6
