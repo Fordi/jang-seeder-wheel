@@ -82,28 +82,72 @@ function chord(r, f) = sin(acos((r - f) / r)) * r;
 module flattened_cylinder(r1, r2, h, f1, f2, $fn) {
   difference () {
     cylinder(r1=r1, r2=r2, h=h, $fn=$fn);
-    polyhedron(
-      points = [
-        [ r1 - f1,  chord(r1, f1), -0.001],
-        [ r1 - f1, -chord(r1, f1), -0.001],
-        [ r2 - f2,  chord(r2, f2), 1.001*h],
-        [ r2 - f2, -chord(r2, f2), 1.001*h],
-        [ r1     ,  chord(r1, f1), -0.001],
-        [ r1     , -chord(r1, f1), -0.001],
-        [ r2     ,  chord(r2, f2), 1.001*h],
-        [ r2     , -chord(r2, f2), 1.001*h],
-      ],
-      faces = [
-        [0, 2, 3, 1],
-        [5, 7, 6, 4],
-        [4, 0, 1, 5],
-        [3, 2, 6, 7],
-        [7, 5, 1, 3],
-        [4, 6, 2, 0],
-      ]
-    );
+    translate([0, 0, -0.001])
+      linear_extrude(
+        height=h * 1.002,
+        scale=(r2-f2) / (r1-f1)
+      ) 
+        polygon([
+          [r1 - f1, max(r1, r2)],
+          [r1 - f1, -max(r1, r2)],
+          [max(r1, r2), -max(r1, r2)],
+          [max(r1, r2), max(r1, r2)]
+        ]);
   }
-};
+}
+
+module bore(
+  dia,
+  flat,
+  bezel,
+  ribs,
+  height,
+  $fn
+) {
+  bezel_dia = dia + bezel * 2;
+  bezel_flat = flat + bezel;
+  flat_bevel_width = sin(acos((bezel_dia / 2 - bezel_flat) / (bezel_dia / 2))) * (bezel_dia / 2);
+  union() {
+    difference() {
+      flattened_cylinder(
+        r1=dia / 2,
+        r2=dia / 2,
+        f1=flat,
+        f2=flat,
+        h=height,
+        $fn=$fn
+      );
+      translate([dia / 2 - flat, -flat_bevel_width, 0])
+        union() {
+          translate([0, flat_bevel_width*2/3, 0]) cylinder(r=ribs, h=20, $fn=$fn);
+          translate([0, flat_bevel_width*4/3, 0]) cylinder(r=ribs, h=20, $fn=$fn);
+        }
+      // Bore ribs
+      for (theta = [0 : 60 : 300]) {
+        rotate([0, 0, theta])
+          translate([0, dia/2, 0])
+            cylinder(r=ribs, h=20, $fn=$fn);
+      }
+    }
+    translate([0, 0, -bezel * 2 * 0.001]) flattened_cylinder(
+      r1  = dia / 2 + bezel, 
+      r2  = dia / 2 - bezel, 
+      f1  = flat,
+      f2  = flat,
+      h   = bezel * 2 * 1.001, 
+      $fn = $fn
+    );
+    translate([0, 0, height - bezel * 2])
+      flattened_cylinder(
+        r1  = dia / 2 - bezel, 
+        r2  = dia / 2 + bezel, 
+        f1  = flat,
+        f2  = flat,
+        h   = bezel * 2 * 1.001, 
+        $fn = $fn
+      );
+  }
+}
 
 module quarter_cylinder() {
   difference() {
@@ -160,7 +204,7 @@ module finger(
   }
 }
 
-module seedRoller(
+module seed_roller(
   wheel_dia=60,
   wheel_width=20,
   rim_thickness=4,
@@ -244,47 +288,14 @@ module seedRoller(
       }
     }
     // Bore
-
-    union() {
-      difference() {
-        flattened_cylinder(
-          r1=bore_dia / 2,
-          r2=bore_dia / 2,
-          f1=bore_flat,
-          f2=bore_flat,
-          h=wheel_width,
-          $fn=cylinder_res
-        );
-        translate([bore_dia / 2 - bore_flat, -flat_bevel_width, 0])
-          union() {
-            translate([0, flat_bevel_width*2/3, 0]) cylinder(r=bore_rib_depth, h=20, $fn=cylinder_res);
-            translate([0, flat_bevel_width*4/3, 0]) cylinder(r=bore_rib_depth, h=20, $fn=cylinder_res);
-          }
-        // Bore ribs
-        for (theta = [0 : 60 : 300]) {
-          rotate([0, 0, theta])
-            translate([0, bore_dia/2, 0])
-              cylinder(r=bore_rib_depth, h=20, $fn=cylinder_res);
-        }
-      }
-      translate([0, 0, -bore_bezel * 2 * 0.001]) flattened_cylinder(
-        r1  = bore_dia / 2 + bore_bezel, 
-        r2  = bore_dia / 2 - bore_bezel, 
-        f1  = bore_flat,
-        f2  = bore_flat,
-        h   = bore_bezel * 2 * 1.001, 
-        $fn = cylinder_res
-      );
-      translate([0, 0, wheel_width - bore_bezel * 2])
-        flattened_cylinder(
-          r1  = bore_dia / 2 - bore_bezel, 
-          r2  = bore_dia / 2 + bore_bezel, 
-          f1  = bore_flat,
-          f2  = bore_flat,
-          h   = bore_bezel * 2 * 1.001, 
-          $fn = cylinder_res
-        );
-    }
+    bore(
+      dia = bore_dia,
+      flat = bore_flat,
+      bezel = bore_bezel,
+      ribs = bore_rib_depth,
+      height = wheel_width,
+      $fn = cylinder_res
+    );
     // Seeds
     for(theta = [0 : (360 / (seed_count / seed_rows)) : 360 - (360 / (seed_count / seed_rows))]) {
       for(row = [0 : 1 : seed_rows - 1]) {
@@ -365,7 +376,7 @@ module seedRoller(
                         circle(d=seed_countersink_size * 2 + seed_size, $fn=seed_res);
                         translate([
                           -(seed_countersink_size * 2 + seed_size)/2,
-                          -(seed_countersink_size * 2 + seed_size),
+                          -(seed_countersink_size * 2 + seed_size)
                         ])
                           square([seed_countersink_size * 2 + seed_size, seed_countersink_size * 2 + seed_size]);
                       }
@@ -415,24 +426,29 @@ module seedRoller(
                       translate([-0.5, 0, 0]) unit_half_teardrop();
                     }
                 }
-            // Regular sphere shape
+            // Tilted finger shape
             } else if (seed_shape == "finger") {
-              translate([-seed_size / 2, 0, 0]) rotate([0, 0, -45]) rotate([0, 90, 0]) finger(
-                d1=seed_size,
-                d2=seed_size,
-                h=seed_size * 2,
-                rh=seed_size / 2,
-                $fn=seed_res
-              );
+              translate([-seed_size / 2, 0, 0])
+                rotate([0, 0, -45])
+                  rotate([0, 90, 0])
+                    finger(
+                      d1=seed_size,
+                      d2=seed_size,
+                      h=seed_size * 2,
+                      rh=seed_size / 2,
+                      $fn=seed_res
+                    );
+            // Regular sphere shape
             } else {
               union() {
                 if (seed_countersink_size > 0 && seed_countersink_depth > 0) {
-                  rotate([0,270,0]) cylinder(
-                    h=seed_countersink_depth * 1.001,
-                    d1=seed_countersink_size * 2 + seed_size,
-                    d2=seed_size,
-                    $fn=seed_res
-                  );
+                  rotate([0, 270, 0])
+                    cylinder(
+                      h=seed_countersink_depth * 1.001,
+                      d1=seed_countersink_size * 2 + seed_size,
+                      d2=seed_size,
+                      $fn=seed_res
+                    );
                 }
                 translate([-seed_countersink_depth, 0, 0])
                   resize([seed_depth, 0, 0])
@@ -449,18 +465,19 @@ module seedRoller(
   // Text (for spoked body)
   union() {
     // Sit on top of spokes _unless_ spokes at upper extreme
-    _z = disc_thickness/2+wheel_width/2;
-    translate([9.5,text_box_length/2,_z])
-    rotate([0,0,270])
+    _z = disc_thickness / 2 + wheel_width / 2;
+    translate([9.5, text_box_length / 2, _z])
+    rotate([0, 0, 270])
       difference() {
-        cube([text_box_length,text_box_width,text_box_height]);
-        translate([text_box_length/2,text_box_width/2,text_box_height-text_depth+.05])
-            linear_extrude(text_depth) text(text, text_size, halign="center", valign="center");
+        cube([text_box_length, text_box_width, text_box_height]);
+        translate([text_box_length / 2, text_box_width / 2, text_box_height - text_depth + 0.05])
+          linear_extrude(text_depth)
+            text(text, text_size, halign="center", valign="center");
       }
   }
 }
 
-seedRoller(
+seed_roller(
   wheel_dia=wheel_dia,
   wheel_width=wheel_width,
   rim_thickness=rim_thickness,

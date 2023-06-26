@@ -10,9 +10,9 @@ OPENSCAD="$(which openscad)"
 #
 # http://www.implicitcad.org/
 #
-# Unfortunately, ImplicitCAD doesn't yet support `polyhedron`, which is necessary
-# for rendering the hole, so we can't use it yet.  However, I did solve the 
-# presets problem. 
+# Unfortunately, ImplicitCAD doesn't yet support `text()`, which is necessary
+# for rendering the label, so we can't use it yet.  However, I did solve the 
+# presets problem and the lack of `polyhedron()`. 
 # IMPLICITCAD="$HOME/.cabal/bin/extopenscad"
 
 JQ="$(which jq)"
