@@ -351,7 +351,7 @@
         "wheel_dia": "60",
         "wheel_width": "20"
       },
-      "Jang J1-6": {
+      "Jang J1-6 (prototype)": {
         "bore_bezel": "0.5",
         "bore_dia": "15.25",
         "bore_flat": "2",
@@ -372,11 +372,11 @@
         "spoke_count": "9",
         "spoke_height": "13",
         "spoke_thickness": "1.5",
-        "text": "J1-6 (prototype)",
+        "text": "J1-6",
         "wheel_dia": "60",
         "wheel_width": "20"
       },
-      "Jang J3-6": {
+      "Jang J3-6 (prototype)": {
         "bore_bezel": "0.5",
         "bore_dia": "15.25",
         "bore_flat": "2",
@@ -397,11 +397,11 @@
         "spoke_count": "9",
         "spoke_height": "13",
         "spoke_thickness": "1.5",
-        "text": "J3-6 (prototype)",
+        "text": "J3-6",
         "wheel_dia": "60",
         "wheel_width": "20"
       },
-      "Jang J5-6": {
+      "Jang J5-6 (prototype)": {
         "bore_bezel": "0.5",
         "bore_dia": "15.25",
         "bore_flat": "2",
@@ -422,7 +422,7 @@
         "spoke_count": "9",
         "spoke_height": "13",
         "spoke_thickness": "1.5",
-        "text": "J5-6 (prototype)",
+        "text": "J5-6",
         "wheel_dia": "60",
         "wheel_width": "20"
       },
