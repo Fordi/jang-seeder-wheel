@@ -50,7 +50,7 @@ seed_size=3.5;
 seed_depth=1.75;
 
 // Shape of seed imprint
-seed_shape = "sphere"; // [sphere:sphere, cone:cone, half-moon:half-moon, cross:cross, slot:slot]
+seed_shape = "sphere"; // [sphere:sphere, cone:cone, half-moon:half-moon, cross:cross, slot:slot, finger:finger]
 
 // Countersink around seed in mm
 seed_countersink_size=0.01;
@@ -139,6 +139,24 @@ module unit_half_teardrop() {
                 quarter_cylinder();
               }
     }
+}
+
+module finger(
+  h=20,
+  rh=5,
+  d1=10,
+  d2=10,
+  $fn=30
+) {
+   translate([0, 0, rh]) union() {
+    cylinder(
+      h = h - rh,
+      d1 = d1,
+      d2 = d2,
+      $fn = $fn
+    );
+    scale([d1, d1, rh*2]) sphere(d=1, $fn = $fn);
+  }
 }
 
 module seedRoller(
@@ -397,6 +415,14 @@ module seedRoller(
                     }
                 }
             // Regular sphere shape
+            } else if (seed_shape == "finger") {
+              translate([-seed_size / 2, 0, 0]) rotate([0, 0, -45]) rotate([0, 90, 0]) finger(
+                d1=seed_size,
+                d2=seed_size,
+                h=seed_size * 2,
+                rh=seed_size / 2,
+                $fn=seed_res
+              );
             } else {
               union() {
                 if (seed_countersink_size > 0 && seed_countersink_depth > 0) {
@@ -457,4 +483,3 @@ seedRoller(
   cylinder_res=cylinder_res,
   seed_res=seed_res
 );
-
