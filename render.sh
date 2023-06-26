@@ -2,7 +2,9 @@
 ENTRY="$(dirname "$0")/seed_roller.scad"
 PRESETS="$(dirname "$0")/seed_roller.json"
 RENDER_DIR="$(dirname "$0")/stl"
-MAX_THREADS=4
+MAX_THREADS=$(lscpu -p | grep -v '#' | wc -l)
+
+echo "Detected ${MAX_THREADS} CPUs"
 
 OPENSCAD="$(which openscad)"
 # Need to update the scad to support ImplicitCAD,
