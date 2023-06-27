@@ -99,4 +99,4 @@ To render all the presets into `./stl/`.
 ./render.sh all
 ```
 
-> Note: there are 57 rollers, and they each take about a minute to render, with more or more complex holes taking longer (though, render.sh works parallel up to the number of processors you have).  So you're looking at a nontrivial amount of render time, depedning on your machine.  Mine kocks everything out in about 11 minutes at 8-parallel.
+> Note: there are 57 rollers, and they each take about a minute to render, with more or more complex holes taking longer (though, render.sh works parallel up to the number of processors you have).  So you're looking at a nontrivial amount of render time, depedning on your machine.  Mine knocks everything out in about 11 minutes at 8-parallel.
