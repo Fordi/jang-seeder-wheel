@@ -1,7 +1,8 @@
 #!/bin/bash
-ENTRY="$(dirname "$0")/seed_roller.scad"
-PRESETS="$(dirname "$0")/seed_roller.json"
-RENDER_DIR="$(dirname "$0")/stl"
+HERE="$(dirname "$0")"
+ENTRY="$HERE/seed_roller.scad"
+PRESETS="$HERE/seed_roller.json"
+RENDER_DIR="$HERE/stl"
 MAX_THREADS=$(lscpu -p | grep -v '#' | wc -l)
 
 OPENSCAD="$(which openscad)"
@@ -14,6 +15,26 @@ OPENSCAD="$(which openscad)"
 # for rendering the label, so we can't use it yet.  However, I did solve the 
 # presets problem and the lack of `polyhedron()`. 
 # IMPLICITCAD="$HOME/.cabal/bin/extopenscad"
+
+# If docker is available and we're not in docker, go the docker route
+if [[ -n "$(which docker)" && "$(pwd)" != '/input' ]]; then
+  # Create the docker image if it doesn't exist
+  imageId="$(docker images -q seed-roller-renderer)"
+  if [[ -z "$imageId" ]]; then
+    docker build -t seed-roller-renderer "$HERE"
+  fi
+
+  # Delete the container if it already exists
+  containerId="$(docker container ls -aqf 'name=^seed-roller-renderer')"
+  if [[ -n "$containerId" ]]; then
+    docker container rm seed-roller-renderer
+  fi
+
+  cd "$HERE"
+  # Create and run the container, and clean up.
+  docker run --name seed-roller-renderer --rm -v "$(pwd)":/input --entrypoint /input/render.sh -t seed-roller-renderer "${@}"
+  exit
+fi 
 
 JQ="$(which jq)"
 function fJQ() {
@@ -84,6 +105,8 @@ if [[ "$1" == "all" ]]; then
       PID=$!
       OPEN_PIDS=("${OPEN_PIDS[@]}" "$PID")
       OPEN_RENDERS=("${OPEN_RENDERS[@]}" "$type")
+    else
+      echo "'$RENDER_DIR/$type.stl' already rendered."
     fi
   done < <(list_presets)
   wait

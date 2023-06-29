@@ -100,3 +100,11 @@ To render all the presets into `./stl/`.
 ```
 
 > Note: there are 57 rollers, and they each take about a minute to render, with more or more complex holes taking longer (though, render.sh works parallel up to the number of processors you have).  So you're looking at a nontrivial amount of render time, depedning on your machine.  Mine knocks everything out in about 11 minutes at 8-parallel.
+
+## Windows users
+
+You can grab a windows build of [OpenSCAD](https://openscad.org/downloads.html), open `seed_roller.scad`, load the preset you want to render, and generate an STL from the UI.  
+
+To generate _all_ the STL files on Windows, your easiest way would be to install [Docker](https://www.docker.com/products/docker-desktop/).  Once you've done that, `render.bat` should work just as `render.sh` does (e.g., `render all` will start generating everything).  First run takes some time, as it needs to download the `openscad/openscad` image and install `jq`, but that only takes a minute or two.
+
+As an aside, if you've got Docker installed on Linux or OS-X, `render.sh` will create the container there as well - so if you're having trouble running `render.sh`, installing docker will (essentially) fix the problem for you.
