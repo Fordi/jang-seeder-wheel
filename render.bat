@@ -12,7 +12,7 @@ if "%imageId%" == "" (
 )
 
 : Delete the container if it already exists
-for /f %%i in ('docker container ls -aqf 'name=^seed-roller-renderer') do set containerId=%%i
+for /f %%i in ('docker container ls -aqf "name=^seed-roller-renderer"') do set containerId=%%i
 if NOT "%containerId%" == "" (
   docker container rm seed-roller-renderer
 )
