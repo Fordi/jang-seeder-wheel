@@ -1,8 +1,8 @@
-FROM openscad/openscad
+FROM openscad/openscad:dev
 
-RUN apt update && \
-  apt upgrade -y && \
-  apt install jq -y
+RUN apt-get update && \
+  apt-get upgrade -y && \
+  apt-get install jq procps -y
 
 VOLUME /input
 WORKDIR /input
