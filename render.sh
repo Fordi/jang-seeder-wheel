@@ -3,7 +3,7 @@ HERE="$(dirname "$0")"
 ENTRY="$HERE/seed_roller.scad"
 PRESETS="$HERE/seed_roller.json"
 RENDER_DIR="$HERE/stl"
-MAX_THREADS=$(lscpu -p | grep -v '#' | wc -l)
+MAX_THREADS=$(nproc)
 
 OPENSCAD="$(which openscad)"
 # Need to update the scad to support ImplicitCAD,
