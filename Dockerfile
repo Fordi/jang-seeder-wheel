@@ -1,4 +1,4 @@
-FROM openscad/openscad
+FROM openscad/openscad:dev
 
 RUN apt update && \
   apt upgrade -y && \
